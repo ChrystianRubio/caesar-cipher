@@ -1,26 +1,30 @@
 import sys
 
-#set rotation 
-#set numbers or not in decrypt
 
 print('Origin: ' + sys.argv[1])
 
 decript = ''
+rotation = int(input('Rotation: '))
+
 
 for x in range(0, len(sys.argv[1])):
 
-	if sys.argv[2] == '-e':
-		decript += chr(ord(sys.argv[1][x]) + 3)
+	if sys.argv[1][x].isalpha():
+		if sys.argv[2] == '-e' : 
+			decript += chr(ord(sys.argv[1][x]) + rotation)
 	
 
-#		if x == (len(sys.argv[1]) -1 ):
 	
-#			print(f"Decrypt: {decript}")
-	elif sys.argv[2] == '-d':
-		decript += chr(ord(sys.argv[1][x]) - 3)
+		elif sys.argv[2] == '-d':
+			decript += chr(ord(sys.argv[1][x]) - rotation)
 	
 
-	if x == (len(sys.argv[1]) -1 ):
+	else:
+		decript += sys.argv[1][x]
+
+
+
+	if x == (len(sys.argv[1]) - 1 ):
 	
 		print(f"Decrypt: {decript}")
 
